@@ -2,9 +2,9 @@
 
 namespace BuberDinner.Domain.MenuReview.ValueObjects;
 
-public sealed class MenuReviewId : ValueObject
+public sealed class MenuReviewId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
+    public override Guid Value { get; protected set; }
 
     private MenuReviewId(Guid value)
     {
@@ -12,6 +12,12 @@ public sealed class MenuReviewId : ValueObject
     }
 
     public static MenuReviewId CreateUnique() => new(Guid.NewGuid());
+
+    public static MenuReviewId Create(Guid value)
+    {
+        // TODO: enforce invariants
+        return new MenuReviewId(value);
+    }
 
     public override IEnumerable<object> GetEqualityComponents()
     {

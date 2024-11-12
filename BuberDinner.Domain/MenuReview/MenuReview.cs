@@ -3,7 +3,7 @@ using BuberDinner.Domain.MenuReview.ValueObjects;
 
 namespace BuberDinner.Domain.MenuReview;
 
-public sealed class MenuReview : AggregateRoot<MenuReviewId>
+public sealed class MenuReview : AggregateRoot<MenuReviewId, Guid>
 {
     private MenuReview(MenuReviewId menuReviewId) : base(menuReviewId)
     {
