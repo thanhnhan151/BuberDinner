@@ -16,7 +16,7 @@ public sealed class Menu : AggregateRoot<MenuId>
     public string Name { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
     public AverageRating AverageRating { get; private set; }
-    public HostId HostId { get; }
+    public HostId HostId { get; private set; }
 
     public IReadOnlyList<MenuSection> Sections => _sections.AsReadOnly();
     public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
@@ -56,4 +56,10 @@ public sealed class Menu : AggregateRoot<MenuId>
             AverageRating.CreateNew(),
             sections ?? new());
     }
+
+#pragma warning disable CS8618
+    private Menu()
+    {
+    }
+#pragma warning restore CS8618
 }
