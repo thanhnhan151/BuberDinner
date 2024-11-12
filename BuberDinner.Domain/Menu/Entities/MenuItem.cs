@@ -6,13 +6,11 @@ namespace BuberDinner.Domain.Menu.Entities;
 public sealed class MenuItem : Entity<MenuItemId>
 {
     public string Name { get; private set; } = string.Empty;
-
     public string Description { get; private set; } = string.Empty;
 
-    private MenuItem(MenuItemId menuItemId, string name, string description)
-        : base(menuItemId)
+    private MenuItem(string name, string description)
+        : base(MenuItemId.CreateUnique())
     {
-
         Name = name;
         Description = description;
     }
@@ -22,7 +20,6 @@ public sealed class MenuItem : Entity<MenuItemId>
         string description)
     {
         return new(
-            MenuItemId.CreateUnique(),
             name,
             description);
     }

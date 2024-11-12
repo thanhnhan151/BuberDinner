@@ -1,4 +1,4 @@
-﻿using BuberDinner.Application.Persistence;
+﻿using BuberDinner.Application.Common.Persistence;
 using BuberDinner.Domain.User;
 
 namespace BuberDinner.Infrastructure.Persistence;
